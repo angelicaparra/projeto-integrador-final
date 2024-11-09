@@ -67,21 +67,6 @@ def plotar_graficos(df):
             corr = df[colunas_numericas].corr()
             ax = sns.heatmap(corr, annot=True, cmap='coolwarm')
             st.pyplot(fig)
-
-        # Função para exibir correlação com tamanho aumentado
-        def barra_correlacao(df):
-            colunas_numericas = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
-            if colunas_numericas:
-                st.write("Matriz de correlação:")
-                # Ajustando o tamanho do gráfico
-                fig, ax = plt.subplots(figsize=(12, 8))  # Aumente os valores para ajustar o tamanho
-                corr = df[colunas_numericas].corr()
-                ax = sns.heatmap(corr, annot=True, cmap='coolwarm', square=True)
-                st.pyplot(fig)
-            else:
-                st.write("Não há colunas numéricas suficientes para gerar a matriz de correlação.")
-
-
         
         elif grafico == 'Radar Chart':
             categorias = st.multiselect("Escolha categorias para o Radar Chart", colunas_numericas)
