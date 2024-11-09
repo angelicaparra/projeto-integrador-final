@@ -62,11 +62,6 @@ def plotar_graficos(df):
             ax = sns.histplot(df[coluna], kde=True)
             st.pyplot(fig)
 
-        elif grafico == 'Correlação':
-            fig, ax = plt.subplots()
-            corr = df[colunas_numericas].corr()
-            ax = sns.heatmap(corr, annot=True, cmap='coolwarm')
-            st.pyplot(fig)
         
         elif grafico == 'Radar Chart':
             categorias = st.multiselect("Escolha categorias para o Radar Chart", colunas_numericas)
