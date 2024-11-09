@@ -104,9 +104,22 @@ def aplicar_kmeans(df):
     else:
         st.write("Dados insuficientes para clustering.")
 
+# Função para exibir correlação com tamanho aumentado
+def barra_correlacao(df):
+    colunas_numericas = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
+    if colunas_numericas:
+        st.write("Matriz de correlação:")
+        # Ajustando o tamanho do gráfico
+        fig, ax = plt.subplots(figsize=(12, 8))  # Aumente os valores para ajustar o tamanho
+        corr = df[colunas_numericas].corr()
+        ax = sns.heatmap(corr, annot=True, cmap='coolwarm', square=True)
+        st.pyplot(fig)
+    else:
+        st.write("Não há colunas numéricas suficientes para gerar a matriz de correlação.")
+
 # Aplicativo principal
 def main():
-    st.title("Análise de Dados com Streamlit")
+    st.title("Agrupamento de Clientes - com K-Means")
 
     # Organize o layout em colunas
     col1, col2 = st.columns(2)
@@ -125,8 +138,6 @@ def main():
             # Exibir gráficos
             plotar_graficos(df_tratado)
 
-            # Adicionar análise de clustering (opcional)
-            aplicar_kmeans(df_tratado)
 
 if __name__ == '__main__':
     main()
