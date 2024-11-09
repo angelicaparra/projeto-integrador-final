@@ -47,7 +47,7 @@ def plotar_graficos(df):
     colunas_numericas = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
 
     if len(colunas_numericas) > 1:
-        grafico = st.selectbox("Escolha o tipo de gráfico", ['Gráfico de Dispersão', 'Histograma', 'Correlação', 'Radar Chart'])
+        grafico = st.selectbox("Escolha o tipo de gráfico", ['Gráfico de Dispersão', 'Histograma', 'Radar Chart'])
 
         if grafico == 'Gráfico de Dispersão':
             x = st.selectbox("Escolha a coluna para o eixo X", colunas_numericas)
